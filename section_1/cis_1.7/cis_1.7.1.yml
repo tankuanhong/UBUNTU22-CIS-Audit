@@ -6,8 +6,8 @@ file:
     path: /etc/motd
     exists: true
     contents:
-    -  "{{ .Vars.ubtu22_warning_banner }}"
-    - '!//\(v|r|m|s)/'
+    - "{{ .Vars.ubtu22_warning_banner }}"
+    - '!/\\(v|r|m|s)/'
     - '!/\/etc\/os-release/'
     - '!/(?i)ubuntu/'
     meta:
@@ -32,9 +32,9 @@ file:
     path: /etc/pam.d/sshd
     exists: true
     contents:
-    - '/#session\s+optional\s+pam_motd.so\s+motd=/run/motd.dynamic/'
-    - '/#session\s+optional\s+pam_motd.so noupdate/'
-    - '!/session\s+optional\s+pam_motd.so noupdate/'
+    - '/# session\s+optional\s+pam_motd.so\s+motd=/run/motd.dynamic/'
+    - '/# session\s+optional\s+pam_motd.so noupdate/'
+    - '!/^session\s+optional\s+pam_motd.so noupdate/'
     - '!/^session\s+optional\s+pam_motd.so\s+motd=/run/motd.dynamic/'
 {{ end }}
 {{ if not .Vars.ubtu22cis_disable_dynamic_motd }}
